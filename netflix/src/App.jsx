@@ -1,11 +1,10 @@
-import React from 'react'
+import React from "react";
+import Body from "./component/Body";
+
+
 
 const App = () => {
-  return (
-    <div>
-      <h1 className='bg-amber-400'>skc</h1>
-    </div>
-  )
-}
+   return  <Body />
+};
 
-export default App
+export default App;
