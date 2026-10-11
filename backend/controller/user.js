@@ -1,8 +1,8 @@
 //   authenticate of person
 
-import { User } from "../models/userModel";
+import { User } from "../models/userModel.js";
 
-const Register = async (req, res) => {
+export const Register = async (req, res) => {
     const { fullName, email, password } = req.body;
 
 
