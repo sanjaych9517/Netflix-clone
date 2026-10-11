@@ -13,6 +13,9 @@ const Login = () => {
   const getInputData = (e) => {
     e.preventDefault();
     console.log(fullName, email, password);
+    setFullName("");
+    setEmail("");
+    setPassword("");
   };
   return (
     <div>
@@ -39,6 +42,7 @@ const Login = () => {
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
               type="text"
+              required
               placeholder="userName"
               className="outline-none p-3 my-2 rounded-sm bg-gray-800 text-white"
             />
@@ -48,6 +52,7 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
+            required
             placeholder="email@gmail.com"
             className="outline-none p-3 my-2 rounded-sm bg-gray-800 text-white"
           />
@@ -55,6 +60,7 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type="password"
+            required
             placeholder="Password"
             className="outline-none p-3 my-2 rounded-sm bg-gray-800 text-white"
           />
