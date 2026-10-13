@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import Header from "./Header";
+import axios from "axios";
+import { API_END_POINT } from "../../utils/constant";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -10,9 +13,49 @@ const Login = () => {
     setIsLogin(!isLogin);
   };
 
-  const getInputData = (e) => {
+  const getInputData = async (e) => {
     e.preventDefault();
-    console.log(fullName, email, password);
+
+    if (isLogin) {
+      const user = { email, password };
+
+      try {
+        const res = await axios.post(`${API_END_POINT}/login`, user, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        });
+
+        console.log(res);
+        if (res.data.success) {
+          toast.success(res.data.message);
+        }
+      } catch (error) {
+        toast.error(error.response.data.message);
+        console.log(error);
+      }
+    } else {
+      // register
+      const user = { fullName, email, password };
+      console.log(user);
+      try {
+        const res = await axios.post(`${API_END_POINT}/register`, user, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        });
+        console.log(res);
+        if (res.data.success) {
+          toast.success(res.data.message);
+        }
+      } catch (error) {
+        toast.error(error.response.data.message);
+        console.log(error);
+      }
+    }
+
     setFullName("");
     setEmail("");
     setPassword("");
