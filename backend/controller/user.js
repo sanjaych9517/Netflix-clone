@@ -67,7 +67,7 @@ export const Login = async (req, res) => {
 };
 
 
-// REGISTER
+// // REGISTER
 export const Register = async (req, res) => {
     try {
         const { fullName, email, password } = req.body;
