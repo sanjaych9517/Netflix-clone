@@ -54,7 +54,12 @@ export const Login = async (req, res) => {
             })
             .json({
                 message: `Welcome back ${user.fullName}`,
-                success: true
+                success: true,
+                user: {
+                    _id: user._id,
+                    fullName: user.fullName,
+                    email: user.email
+                }
             });
 
     } catch (error) {
